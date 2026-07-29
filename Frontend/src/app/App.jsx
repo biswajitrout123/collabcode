@@ -17,6 +17,16 @@ const App = () => {
   const handleMount = (editor) => {
     editorRef.current = editor
 
+    const provider = new SocketIOProvider("http://localhost:3000", "monaco", ydoc, {
+      autoConnect: true
+    })
+    const monacoBinding = new MonacoBinding(
+      yText,
+      editorRef.current.getModel(),
+      new Set([editorRef.current]),
+      provider.awareness
+    )
+
 
 
   }
@@ -35,6 +45,7 @@ const App = () => {
             defaultLanguage="javascript"
             defaultValue="// some comment"
             theme="vs-dark"
+            onMount={handleMount}
           />
 
         </section>
