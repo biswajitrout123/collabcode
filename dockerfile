@@ -1,6 +1,5 @@
-# ==========================================
+
 # Stage 1: Build the Frontend [dist folder]
-# ==========================================
 FROM node:20-alpine AS frontend-builder
 
 # Set the working directory first
@@ -13,9 +12,7 @@ COPY ./Frontend ./
 RUN npm install
 RUN npm run build
 
-# ==========================================
 # Stage 2: Build the Backend & Final Image
-# ==========================================
 FROM node:20-alpine
 
 # Set the working directory first
